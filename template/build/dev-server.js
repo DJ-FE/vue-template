@@ -3,13 +3,13 @@ process.env.NODE_ENV = 'development'
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
-var config = require('./config')
 var mock = require('./dev-mock')
 var opn = require('opn')
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = require('./webpack.dev.conf')
+var config = require('./config')
 
-var port = process.env.PORT || config.dev.port || '8080'
+var port = config.dev.port || '8080'
 var proxyTable = config.dev.proxyTable
 
 var app = express()
@@ -51,7 +51,6 @@ app.use(require('connect-history-api-fallback')())
 // serve webpack bundle output
 app.use(devMiddleware)
 
-// enable hot-reload and state-preserving
 app.use(hotMiddleware)
 
 // serve pure static assets

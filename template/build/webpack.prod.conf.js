@@ -1,11 +1,11 @@
 var path = require('path')
-var config = require('./config')
 var utils = require('./utils')
 var webpack = require('webpack')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var config = require('./config')
 var buildEnv = JSON.parse(process.env.npm_config_argv).remain[0] || 'test'
 
 var webpackConfig = merge(baseWebpackConfig, {
@@ -33,7 +33,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         warnings: false
       }
     }),
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new ExtractTextPlugin(utils.assetsPath(config[buildEnv]['styleFilename'])),
     new HtmlWebpackPlugin({
       filename: config[buildEnv]['index'],
@@ -49,7 +49,6 @@ var webpackConfig = merge(baseWebpackConfig, {
       },
       chunksSortMode: 'dependency'
     }),
-
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: function (module, count) {

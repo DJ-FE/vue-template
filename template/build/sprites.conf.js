@@ -1,6 +1,5 @@
 var spritesconf = function (conf) {
   var sprites = function(data) {
-    // rem 配置，html节点font-size以100px为基准
     var scale = conf.scale || 200
     var unit = conf.unit || 'rem'
 

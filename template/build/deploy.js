@@ -11,14 +11,14 @@ if (!config['deploy'] || !_.isPlainObject(config['deploy'])) {
 }
 
 var conn = new ftp({
-  host: '',
-  port: '',
-  user: config['deploy'][deployEnv]['user'],
-  password: config['deploy'][deployEnv]['password'],
-  log: logstr
-})
+    host: config['deploy'][deployEnv]['host'],
+    port: config['deploy'][deployEnv]['port'],
+    user: config['deploy'][deployEnv]['user'],
+    password: config['deploy'][deployEnv]['password'],
+    log: logstr
+  })
 
-fs.src(['./dist/**'], {buffer: false})
+fs.src(['../dist/**'], {buffer: false})
     .pipe(conn.dest(config['deploy'][deployEnv]['path']))
 
 function logstr (mode, address) {
