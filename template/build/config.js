@@ -12,7 +12,8 @@ var baseconfig = {
     productionSourceMap: false,
     filename: 'js/[name].[chunkhash].js',
     chunkFilename: 'js/[name].[chunkhash].js',
-    styleFilename: 'css/[name].[contenthash].css'
+    styleFilename: 'css/[name].[contenthash].css',
+    bundleAnalyzerReport: false
   },
   // 生产环境配置
   prod: {
@@ -23,7 +24,8 @@ var baseconfig = {
     productionSourceMap: false,
     filename: 'js/[name].[chunkhash].js',
     chunkFilename: 'js/[name].[chunkhash].js',
-    styleFilename: 'css/[name].[contenthash].css'
+    styleFilename: 'css/[name].[contenthash].css',
+    bundleAnalyzerReport: true
   },
   // 本地开发配置
   dev: {

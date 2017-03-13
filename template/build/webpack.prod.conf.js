@@ -1,28 +1,27 @@
 var path = require('path')
 var utils = require('./utils')
 var webpack = require('webpack')
+var config = require('./config')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-var config = require('./config')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 var buildEnv = JSON.parse(process.env.npm_config_argv).remain[0] || 'test'
 
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
-    loaders: utils.styleLoaders({ sourceMap: config[buildEnv]['productionSourceMap'], extract: true })
+    rules: utils.styleLoaders({
+      sourceMap: config[buildEnv]['productionSourceMap'],
+      extract: true
+    })
   },
   devtool: config[buildEnv]['productionSourceMap'] ? '#source-map' : false,
   output: {
     path: config[buildEnv]['assetsRoot'],
     filename: utils.assetsPath(config[buildEnv]['filename']),
     chunkFilename: utils.assetsPath(config[buildEnv]['chunkFilename'])
-  },
-  vue: {
-    loaders: utils.cssLoaders({
-      sourceMap: config[buildEnv]['productionSourceMap'],
-      extract: true
-    })
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -31,10 +30,13 @@ var webpackConfig = merge(baseWebpackConfig, {
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
-      }
+      },
+      sourceMap: true
     }),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new ExtractTextPlugin(utils.assetsPath(config[buildEnv]['styleFilename'])),
+    new ExtractTextPlugin({
+      filename: utils.assetsPath(config[buildEnv]['styleFilename'])
+    }),
+    new OptimizeCSSPlugin(),
     new HtmlWebpackPlugin({
       filename: config[buildEnv]['index'],
       template: 'index.html',
@@ -64,8 +66,20 @@ var webpackConfig = merge(baseWebpackConfig, {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       chunks: ['vendor']
-    })
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../static'),
+        to: config[buildEnv]['assetsSubDirectory'],
+        ignore: ['.*']
+      }
+    ])
   ]
 })
+
+if (config[buildEnv]['bundleAnalyzerReport']) {
+  var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+  webpackConfig.plugins.push(new BundleAnalyzerPlugin())
+}
 
 module.exports = webpackConfig
