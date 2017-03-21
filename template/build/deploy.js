@@ -11,8 +11,8 @@ if (!config['deploy'] || !_.isPlainObject(config['deploy'])) {
 }
 
 var conn = new ftp({
-  host: '',
-  port: '',
+  host: config['deploy'][deployEnv]['host'],
+  port: config['deploy'][deployEnv]['port'],
   user: config['deploy'][deployEnv]['user'],
   password: config['deploy'][deployEnv]['password'],
   log: logstr
