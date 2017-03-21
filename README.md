@@ -1,10 +1,17 @@
 # vue-template
 
-> vue初始化项目模板，包含build，deploy，mock
+> vue初始化项目模板，包含build，deploy，mock。依赖于 `vue-cli`
 
 ### Build Setup
 
 ``` bash
+# init project
+    vue init DJ-FE/vue-template#vue1.x-webpack1.x mynewproject  
+or
+    vue init DJ-FE/vue-template#vue2.x-webpack1.x mynewproject  
+or
+    vue init DJ-FE/vue-template#vue2.x-webpack2.x mynewproject  
+
 # install dependencies
 npm install
 
@@ -35,11 +42,13 @@ npm run deploy prod
 
 1. 项目编译、部署区分测试和生产环境
 
-2. 测试和生产环境需要相应配置 `config/index.js` 文件，assetsPublicPath字段
+2. 项目编译测试和生产环境需要相应配置 `config/index.js` 文件，assetsPublicPath字段
 
-3. 项目部署测试和生产环境需要配置 `config/deploy.js` 文件 `deploy` 字段
+3. 项目部署测试和生产环境需要配置 `config/deploy.js` 文件 `test`、`prod` 字段
 
-4. 雪碧图区分px 和 rem两种格式，rem二倍图，font-size为100px为基准，可设置
+4. 雪碧图区默认配置区分px 和 rem两种格式，rem格式以`html`节点 `font-size:100px`为基准
+
+5. 项目模板依赖于 `vue-cli`，安装使用 `npm install -g vue-cli`
 
 ### License
 
