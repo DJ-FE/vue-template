@@ -10,9 +10,9 @@ var baseconfig = {
     assetsSubDirectory: '',
     assetsPublicPath: '',
     productionSourceMap: false,
-    filename: 'js/[name].[chunkhash].js',
-    chunkFilename: 'js/[name].[chunkhash].js',
-    styleFilename: 'css/[name].[contenthash].css',
+    filename: 'js/[name].js',
+    chunkFilename: 'js/[name].js',
+    styleFilename: 'css/[name].css',
     bundleAnalyzerReport: false
   },
   // 生产环境配置

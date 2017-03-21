@@ -8,11 +8,16 @@ var mock = require('./dev-mock')
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = require('./webpack.dev.conf')
 var config = require('./config')
+var bodyParser = require('body-parser')
 
 var port = config.dev.port || '8080'
 var proxyTable = config.dev.proxyTable
 
 var app = express()
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+
 // mock serve
 let serve = mock(app)
 serve(config.mock || {})
