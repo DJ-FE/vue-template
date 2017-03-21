@@ -128,7 +128,7 @@ let route_post = function(api, queries,response) {
     // 校验query是否完整
     queries && queries.length !== 0 && (() => {
       for (let i = 0, len = queries.length; i < len; i++) {
-        if (!req.query[queries[i]]) {
+        if (!req.body[queries[i]]) {
           ok = false
           res_fail.msg = '参数不完整'
           return
