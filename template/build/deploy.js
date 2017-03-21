@@ -18,7 +18,7 @@ var conn = new ftp({
     log: logstr
   })
 
-fs.src(['../dist/**'], {buffer: false})
+fs.src(['./dist/**'], {buffer: false})
     .pipe(conn.dest(config['deploy'][deployEnv]['path']))
 
 function logstr (mode, address) {
