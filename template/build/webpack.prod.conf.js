@@ -26,7 +26,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': config[buildEnv].env
+      'process.env': "'production'"
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
