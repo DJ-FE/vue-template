@@ -13,9 +13,14 @@ module.exports = {
   plugins: [
     'html'
   ],
-  // add your custom rules here
-  'rules': {
-    // allow paren-less arrow functions
+  // common rules
+  'rules':  {
+    "indent": [2, 4],
+    "space-before-blocks": [0, "always"],
+    "space-before-function-paren": [0, "always"],
+     // allow new with a constructor
+    'no-new':0,
+     // allow paren-less arrow functions
     'arrow-parens': 0,
     // allow async-await
     'generator-star-spacing': 0,
