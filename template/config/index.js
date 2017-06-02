@@ -7,8 +7,8 @@ module.exports = {
   pages: {
     'main': {
       filename: 'index.html',
-      template: './src/view/index/index.html',
-      src: './src/view/index/index.js',
+      template: 'index.html',
+      src: './src/main.js',
       inject: 'body',
       chunks: ['main']
     },
@@ -29,12 +29,12 @@ module.exports = {
         path :'src/assets/icons/' // src 图片文件夹路径
       },
       target:{
-        image :'src/assets/sprite/sprite.png', // target 图片路径
-        css :'src/style/sprite/sprite.scss' // target css 路径
+        image : 'src/assets/sprite/sprite.png', // target 图片路径
+        css : 'src/style/sprite/sprite.scss' // target css 路径
       },
       retina:'@2x', // retina
       padding:10,   // icons padding
-      cssImageRef: '../../assets/sprite/sprite.png' // 生成图片相对css内引用的路径
+      cssImageRef: '~sprite.png' // 生成图片相对css内引用的路径
     }
   },
   // 测试环境配置

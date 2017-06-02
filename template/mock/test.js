@@ -2,16 +2,20 @@
  * mock detault
  * request 
  */
+var API = require('../src/service/API.js');
+console.log(API)
 module.exports = {
-    api: 'GET /api/sales/getSalesList',
+    api: 'POST ' + API.TEST,
     response:{
         ok:{
             "code": 1,
             "message": "成功",
             'data': {
+            	test:11
             }
         }
     }
 }
+
 
 

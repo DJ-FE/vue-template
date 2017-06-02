@@ -33,7 +33,8 @@ var webpackConfig = {
         extensions: ['.js', '.vue', '.json'],
         alias: {
             '@': resolve('src'),
-            'vue$': 'vue/dist/vue.common.js'
+            'vue$': 'vue/dist/vue.common.js',
+            '~sprite.png': path.resolve(__dirname, '../src/styles/sprites/sprite.png')
         }
     },
     module: {

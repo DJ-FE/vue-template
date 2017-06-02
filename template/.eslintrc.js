@@ -15,9 +15,9 @@ module.exports = {
   ],
   // common rules
   'rules':  {
-    "indent": [2, 4],
-    "space-before-blocks": [0, "always"],
-    "space-before-function-paren": [0, "always"],
+    // "indent": [2, 4],
+    // "space-before-blocks": [0, "always"],
+    // "space-before-function-paren": [0, "always"],
      // allow new with a constructor
     'no-new':0,
      // allow paren-less arrow functions

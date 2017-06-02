@@ -1,0 +1,202 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$qzone-name: 'qzone';
+$qzone-x: 0px;
+$qzone-y: 0px;
+$qzone-offset-x: 0px;
+$qzone-offset-y: 0px;
+$qzone-width: 26px;
+$qzone-height: 26px;
+$qzone-total-width: 26px;
+$qzone-total-height: 98px;
+$qzone-image: '~sprite.png';
+$qzone: (0px, 0px, 0px, 0px, 26px, 26px, 26px, 98px, '~sprite.png', 'qzone', );
+$weibo-name: 'weibo';
+$weibo-x: 0px;
+$weibo-y: 36px;
+$weibo-offset-x: 0px;
+$weibo-offset-y: -36px;
+$weibo-width: 26px;
+$weibo-height: 26px;
+$weibo-total-width: 26px;
+$weibo-total-height: 98px;
+$weibo-image: '~sprite.png';
+$weibo: (0px, 36px, 0px, -36px, 26px, 26px, 26px, 98px, '~sprite.png', 'weibo', );
+$weixin-name: 'weixin';
+$weixin-x: 0px;
+$weixin-y: 72px;
+$weixin-offset-x: 0px;
+$weixin-offset-y: -72px;
+$weixin-width: 26px;
+$weixin-height: 26px;
+$weixin-total-width: 26px;
+$weixin-total-height: 98px;
+$weixin-image: '~sprite.png';
+$weixin: (0px, 72px, 0px, -72px, 26px, 26px, 26px, 98px, '~sprite.png', 'weixin', );
+$retina-qzone-name: 'retina_qzone';
+$retina-qzone-x: 0px;
+$retina-qzone-y: 0px;
+$retina-qzone-offset-x: 0px;
+$retina-qzone-offset-y: 0px;
+$retina-qzone-width: 26px;
+$retina-qzone-height: 26px;
+$retina-qzone-total-width: 26px;
+$retina-qzone-total-height: 118px;
+$retina-qzone-image: '~sprite@2x.png';
+$retina-qzone: (0px, 0px, 0px, 0px, 26px, 26px, 26px, 118px, '~sprite@2x.png', 'retina_qzone', );
+$retina-weibo-name: 'retina_weibo';
+$retina-weibo-x: 0px;
+$retina-weibo-y: 46px;
+$retina-weibo-offset-x: 0px;
+$retina-weibo-offset-y: -46px;
+$retina-weibo-width: 26px;
+$retina-weibo-height: 26px;
+$retina-weibo-total-width: 26px;
+$retina-weibo-total-height: 118px;
+$retina-weibo-image: '~sprite@2x.png';
+$retina-weibo: (0px, 46px, 0px, -46px, 26px, 26px, 26px, 118px, '~sprite@2x.png', 'retina_weibo', );
+$retina-weixin-name: 'retina_weixin';
+$retina-weixin-x: 0px;
+$retina-weixin-y: 92px;
+$retina-weixin-offset-x: 0px;
+$retina-weixin-offset-y: -92px;
+$retina-weixin-width: 26px;
+$retina-weixin-height: 26px;
+$retina-weixin-total-width: 26px;
+$retina-weixin-total-height: 118px;
+$retina-weixin-image: '~sprite@2x.png';
+$retina-weixin: (0px, 92px, 0px, -92px, 26px, 26px, 26px, 118px, '~sprite@2x.png', 'retina_weixin', );
+$spritesheet-width: 26px;
+$spritesheet-height: 98px;
+$spritesheet-image: '~sprite.png';
+$spritesheet-sprites: ($qzone, $weibo, $weixin, );
+$spritesheet: (26px, 98px, '~sprite.png', $spritesheet-sprites, );
+$retina-spritesheet-width: 26px;
+$retina-spritesheet-height: 118px;
+$retina-spritesheet-image: '~sprite@2x.png';
+$retina-spritesheet-sprites: ($retina-qzone, $retina-weibo, $retina-weixin, );
+$retina-spritesheet: (26px, 118px, '~sprite@2x.png', $retina-spritesheet-sprites, );
+
+// These "retina group" variables are mappings for the naming and pairing of normal and retina sprites.
+//
+// The list formatted variables are intended for mixins like `retina-sprite` and `retina-sprites`.
+$qzone-group-name: 'qzone';
+$qzone-group: ('qzone', $qzone, $retina-qzone, );
+$weibo-group-name: 'weibo';
+$weibo-group: ('weibo', $weibo, $retina-weibo, );
+$weixin-group-name: 'weixin';
+$weixin-group: ('weixin', $weixin, $retina-weixin, );
+$retina-groups: ($qzone-group, $weibo-group, $weixin-group, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `retina-sprite` mixin sets up rules and a media query for a sprite/retina sprite.
+//   It should be used with a "retina group" variable.
+//
+// The media query is from CSS Tricks: https://css-tricks.com/snippets/css/retina-display-media-query/
+//
+// $icon-home-group: ('icon-home', $icon-home, $icon-home-2x, );
+//
+// .icon-home {
+//   @include retina-sprite($icon-home-group);
+// }
+@mixin sprite-background-size($sprite) {
+  $sprite-total-width: nth($sprite, 7);
+  $sprite-total-height: nth($sprite, 8);
+  background-size: $sprite-total-width $sprite-total-height;
+}
+
+@mixin retina-sprite($retina-group) {
+  $normal-sprite: nth($retina-group, 2);
+  $retina-sprite: nth($retina-group, 3);
+  @include sprite($normal-sprite);
+
+  @media (-webkit-min-device-pixel-ratio: 2),
+         (min-resolution: 192dpi) {
+    @include sprite-image($retina-sprite);
+    @include sprite-background-size($normal-sprite);
+  }
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}
+
+// The `retina-sprites` mixin generates a CSS rule and media query for retina groups
+//   This yields the same output as CSS retina template but can be overridden in SCSS
+//
+// @include retina-sprites($retina-groups);
+@mixin retina-sprites($retina-groups) {
+  @each $retina-group in $retina-groups {
+    $sprite-name: nth($retina-group, 1);
+    .#{$sprite-name} {
+      @include retina-sprite($retina-group);
+    }
+  }
+}

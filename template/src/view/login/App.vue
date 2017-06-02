@@ -1,40 +1,32 @@
 <template>
-    <div id="app">
-        login
-    </div>
+  <div id="app">
+    <h1 class="red">
+      hello world!
+    </h1>
+    <div><img src="../../assets/logo.png" alt=""></div>
+  </div>
 </template>
 <script>
 export default {
-    name: 'app',
-    data () {
-        return {
-        }
-    },
-    computed: {
-    },
-    methods: {
-    },
-    created() {
-        console.log('login')
-        // this.$http.post('/api/sales/checkEnter', {
-        //     cityId: 1,
-        //     activityType: 1,
-        //     activityId: 1,
-        //     goodsId: 1,
-        //     serviceId: 1
-        // }).then(response => {
-        //     let json = response.body
-        //     console.log(json)
-        // })
-        // this.$http.get('/api/sales/getSalesList?cityId=1').then(response => {
-        //     let json = response.body
-        //     console.log(json)
-        // })
-    },
-    components: {
+  name: 'app',
+  data () {
+    return {
     }
+  },
+  created () {
+    console.log('login')
+  },
+  components: {
+  }
 }
 </script>
 <style scoped lang="scss">
-
+#app{text-align: center;}
+h1{
+  font-size:40px;
+  text-align:center;
+  img{
+      width:50%;
+  }
+}
 </style>

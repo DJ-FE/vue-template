@@ -41,6 +41,7 @@ if (Object.keys(proxyTable).length === 0) {
   var mock = require('./dev-mock')
   var mockDir = path.resolve(__dirname, '../mock')
   fs.readdirSync(mockDir).forEach(function (file) {
+    console.log(file)
     var serve = mock(app)
     var obj = {}
     var mockObj = require(path.resolve(mockDir, file))
