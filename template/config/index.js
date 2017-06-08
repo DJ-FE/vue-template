@@ -29,12 +29,12 @@ module.exports = {
         path :'src/assets/icons/' // src 图片文件夹路径
       },
       target:{
-        image : 'src/assets/sprite/sprite.png', // target 图片路径
+        image : 'src/style/sprite/sprite.png', // target 图片路径
         css : 'src/style/sprite/sprite.scss' // target css 路径
       },
       retina:'@2x', // retina
-      padding:10,   // icons padding
-      cssImageRef: '~sprite.png' // 生成图片相对css内引用的路径
+      padding:10   // icons padding
+      // cssImageRef: '~sprite.png' // 生成图片相对css内引用的路径
     }
   },
   // 测试环境配置

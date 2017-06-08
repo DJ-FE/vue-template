@@ -30,11 +30,12 @@ var webpackConfig = {
         chunkFilename: '[name].[chunkhash].js'
     },
     resolve: {
+        modules: ['node_modules', path.resolve(__dirname, '../../src/style/sprite')],
         extensions: ['.js', '.vue', '.json'],
         alias: {
             '@': resolve('src'),
-            'vue$': 'vue/dist/vue.common.js',
-            '~sprite.png': path.resolve(__dirname, '../src/styles/sprites/sprite.png')
+            'vue$': 'vue/dist/vue.common.js'
+            // '~sprite.png': path.resolve(__dirname, '../../src/style/sprite/sprite.png')
         }
     },
     module: {
@@ -108,7 +109,7 @@ var SpritesmithPluginConfig = (function(){
             },
             retina:spriteConfig.retina,
             apiOptions: {
-                cssImageRef: spriteConfig.cssImageRef
+                cssImageRef: '~sprite.png'
             },
             spritesmithOptions: {
                 algorithm: 'top-down',

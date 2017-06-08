@@ -4,6 +4,7 @@
       hello world!
     </h1>
     <div><img src="./assets/logo.png" alt=""></div>
+    <div class="icon1"></div>
   </div>
 </template>
 <script>
@@ -29,6 +30,7 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+@import './style/sprite/sprite.scss';
 #app{text-align: center;}
 h1{
   font-size:40px;
@@ -36,5 +38,8 @@ h1{
   img{
     width:50%;
   }
+}
+.icon1{
+  @include sprite($qzone)
 }
 </style>
