@@ -66,7 +66,7 @@ module.exports = {
     // 代理配置
     proxyTable: {
       // '/api/**': {
-      //   target: 'https://echo-dop7.djtest.cn',//代理地址
+      //   target: '',//代理地址
       //   changeOrigin: true
       // }
     },
