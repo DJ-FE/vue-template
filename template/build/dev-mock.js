@@ -55,7 +55,7 @@ let excute = function(pattern, response) {
   }else{
     api = urlPattern
   }
-
+  console.log('queries', queries)
   route({
     method,
     api,

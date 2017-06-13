@@ -1,8 +1,20 @@
+/**
+ * [webpack 基础配置文件 勿动]
+*/
 var path = require('path')
 var _ = require('lodash')
-var config = require('../config/')
+var config = require('../../config/')
 
 var baseconfig = {
+  pages: {
+    // 'main': {
+    //     filename: 'index.html',
+    //     template: 'index.html',
+    //     src: './src/main.js',
+    //     inject: 'body',
+    //     chunks: ['main']
+    // }
+  },
   // 测试环境配置
   test: {
     index: path.resolve(__dirname, '../dist/views/index.html'),
@@ -25,7 +37,7 @@ var baseconfig = {
     filename: 'js/[name].[chunkhash].js',
     chunkFilename: 'js/[name].[chunkhash].js',
     styleFilename: 'css/[name].[contenthash].css',
-    bundleAnalyzerReport: true
+    bundleAnalyzerReport: false
   },
   // 本地开发配置
   dev: {
