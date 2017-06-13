@@ -107,7 +107,6 @@ var SpritesmithPluginConfig = (function(){
                 image: path.resolve(__dirname,'../../'+ spriteConfig.target.image ),
                 css:  path.resolve(__dirname,'../../'+ spriteConfig.target.css )
             },
-            retina:spriteConfig.retina,
             apiOptions: {
                 cssImageRef: spriteConfig.cssImageRef
             },

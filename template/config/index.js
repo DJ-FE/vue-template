@@ -12,6 +12,13 @@ module.exports = {
       inject: 'body',
       chunks: ['main']
     }
+    // 'login': {
+    //   filename: 'login/login.html',
+    //   template: './src/view/login/login.html',
+    //   src: './src/view/login/login.js',
+    //   inject: 'body',
+    //   chunks: ['main']
+    // }
   },
   // 基本配置
   settings:{
@@ -25,7 +32,6 @@ module.exports = {
         image : 'src/style/sprite/sprite.png', // target 图片路径
         css : 'src/style/sprite/sprite.scss' // target css 路径
       },
-      retina:'@2x', // retina
       padding:10 ,  // icons padding
       cssImageRef: '~sprite.png' // 生成图片相对css内引用的路径
     }

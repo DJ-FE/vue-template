@@ -4,7 +4,7 @@
  */
 var API = require('../src/service/API.js');
 module.exports = {
-    api: 'POST ' + API.TEST,
+    api: 'GET ' + API.TEST,
     response:{
         ok:{
             "code": 1,

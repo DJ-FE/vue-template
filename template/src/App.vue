@@ -7,9 +7,11 @@
 
 <script>
 import Hello from './components/Hello'
-
 export default {
   name: 'app',
+  created: function () {
+    console.log('init')
+  },
   components: {
     Hello
   }

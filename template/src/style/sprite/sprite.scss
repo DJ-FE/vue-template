@@ -42,60 +42,11 @@ $weixin-total-width: 26px;
 $weixin-total-height: 98px;
 $weixin-image: '~sprite.png';
 $weixin: (0px, 72px, 0px, -72px, 26px, 26px, 26px, 98px, '~sprite.png', 'weixin', );
-$retina-qzone-name: 'retina_qzone';
-$retina-qzone-x: 0px;
-$retina-qzone-y: 0px;
-$retina-qzone-offset-x: 0px;
-$retina-qzone-offset-y: 0px;
-$retina-qzone-width: 26px;
-$retina-qzone-height: 26px;
-$retina-qzone-total-width: 26px;
-$retina-qzone-total-height: 118px;
-$retina-qzone-image: '~sprite@2x.png';
-$retina-qzone: (0px, 0px, 0px, 0px, 26px, 26px, 26px, 118px, '~sprite@2x.png', 'retina_qzone', );
-$retina-weibo-name: 'retina_weibo';
-$retina-weibo-x: 0px;
-$retina-weibo-y: 46px;
-$retina-weibo-offset-x: 0px;
-$retina-weibo-offset-y: -46px;
-$retina-weibo-width: 26px;
-$retina-weibo-height: 26px;
-$retina-weibo-total-width: 26px;
-$retina-weibo-total-height: 118px;
-$retina-weibo-image: '~sprite@2x.png';
-$retina-weibo: (0px, 46px, 0px, -46px, 26px, 26px, 26px, 118px, '~sprite@2x.png', 'retina_weibo', );
-$retina-weixin-name: 'retina_weixin';
-$retina-weixin-x: 0px;
-$retina-weixin-y: 92px;
-$retina-weixin-offset-x: 0px;
-$retina-weixin-offset-y: -92px;
-$retina-weixin-width: 26px;
-$retina-weixin-height: 26px;
-$retina-weixin-total-width: 26px;
-$retina-weixin-total-height: 118px;
-$retina-weixin-image: '~sprite@2x.png';
-$retina-weixin: (0px, 92px, 0px, -92px, 26px, 26px, 26px, 118px, '~sprite@2x.png', 'retina_weixin', );
 $spritesheet-width: 26px;
 $spritesheet-height: 98px;
 $spritesheet-image: '~sprite.png';
 $spritesheet-sprites: ($qzone, $weibo, $weixin, );
 $spritesheet: (26px, 98px, '~sprite.png', $spritesheet-sprites, );
-$retina-spritesheet-width: 26px;
-$retina-spritesheet-height: 118px;
-$retina-spritesheet-image: '~sprite@2x.png';
-$retina-spritesheet-sprites: ($retina-qzone, $retina-weibo, $retina-weixin, );
-$retina-spritesheet: (26px, 118px, '~sprite@2x.png', $retina-spritesheet-sprites, );
-
-// These "retina group" variables are mappings for the naming and pairing of normal and retina sprites.
-//
-// The list formatted variables are intended for mixins like `retina-sprite` and `retina-sprites`.
-$qzone-group-name: 'qzone';
-$qzone-group: ('qzone', $qzone, $retina-qzone, );
-$weibo-group-name: 'weibo';
-$weibo-group: ('weibo', $weibo, $retina-weibo, );
-$weixin-group-name: 'weixin';
-$weixin-group: ('weixin', $weixin, $retina-weixin, );
-$retina-groups: ($qzone-group, $weibo-group, $weixin-group, );
 
 // The provided mixins are intended to be used with the array-like variables
 //
@@ -147,34 +98,6 @@ $retina-groups: ($qzone-group, $weibo-group, $weixin-group, );
   @include sprite-height($sprite);
 }
 
-// The `retina-sprite` mixin sets up rules and a media query for a sprite/retina sprite.
-//   It should be used with a "retina group" variable.
-//
-// The media query is from CSS Tricks: https://css-tricks.com/snippets/css/retina-display-media-query/
-//
-// $icon-home-group: ('icon-home', $icon-home, $icon-home-2x, );
-//
-// .icon-home {
-//   @include retina-sprite($icon-home-group);
-// }
-@mixin sprite-background-size($sprite) {
-  $sprite-total-width: nth($sprite, 7);
-  $sprite-total-height: nth($sprite, 8);
-  background-size: $sprite-total-width $sprite-total-height;
-}
-
-@mixin retina-sprite($retina-group) {
-  $normal-sprite: nth($retina-group, 2);
-  $retina-sprite: nth($retina-group, 3);
-  @include sprite($normal-sprite);
-
-  @media (-webkit-min-device-pixel-ratio: 2),
-         (min-resolution: 192dpi) {
-    @include sprite-image($retina-sprite);
-    @include sprite-background-size($normal-sprite);
-  }
-}
-
 // The `sprites` mixin generates identical output to the CSS template
 //   but can be overridden inside of SCSS
 //
@@ -184,19 +107,6 @@ $retina-groups: ($qzone-group, $weibo-group, $weixin-group, );
     $sprite-name: nth($sprite, 10);
     .#{$sprite-name} {
       @include sprite($sprite);
-    }
-  }
-}
-
-// The `retina-sprites` mixin generates a CSS rule and media query for retina groups
-//   This yields the same output as CSS retina template but can be overridden in SCSS
-//
-// @include retina-sprites($retina-groups);
-@mixin retina-sprites($retina-groups) {
-  @each $retina-group in $retina-groups {
-    $sprite-name: nth($retina-group, 1);
-    .#{$sprite-name} {
-      @include retina-sprite($retina-group);
     }
   }
 }
