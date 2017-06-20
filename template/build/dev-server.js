@@ -1,26 +1,22 @@
 process.env.NODE_ENV = 'development'
-
+var webpack = require('webpack')
+var request = require('request')
+var fs = require('fs')
 var opn = require('opn')
 var path = require('path')
 var express = require('express')
-var webpack = require('webpack')
-var mock = require('./dev-mock')
 var proxyMiddleware = require('http-proxy-middleware')
-var webpackConfig = require('./webpack.dev.conf')
-var config = require('./config')
 var bodyParser = require('body-parser')
+var webpackConfig = require('./baseconfig/webpack.dev.conf')
+var config = require('./baseconfig/config')
 
-var port = config.dev.port || '8080'
 var proxyTable = config.dev.proxyTable
+var port = config.dev.port || '8080'
 
 var app = express()
-
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-// mock serve
-let serve = mock(app)
-serve(config.mock || {})
 
 var compiler = webpack(webpackConfig)
 
@@ -40,6 +36,18 @@ compiler.plugin('compilation', function (compilation) {
   })
 })
 
+// mock data
+if (Object.keys(proxyTable).length === 0) {
+  var mock = require('./dev-mock')
+  var mockDir = path.resolve(__dirname, '../mock')
+  fs.readdirSync(mockDir).forEach(function (file) {
+    var serve = mock(app)
+    var obj = {}
+    var mockObj = require(path.resolve(mockDir, file))
+    obj[mockObj.api] = mockObj.response
+    serve(obj || {})
+  })
+}
 // proxy api requests
 Object.keys(proxyTable).forEach(function (context) {
   var options = proxyTable[context]

@@ -1,6 +1,6 @@
 var fs = require('vinyl-fs')
 var ftp = require('vinyl-ftp')
-var config = require('./config')
+var config = require('./baseconfig/config')
 var deployEnv = JSON.parse(process.env.npm_config_argv).remain[0] || 'test'
 var _ = require('lodash')
 let chalk = require('chalk')

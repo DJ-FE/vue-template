@@ -7,9 +7,14 @@
 
 <script>
 import Hello from './components/Hello'
-
+import axios from 'axios'
 export default {
   name: 'app',
+  created: function () {
+    axios.get('/api/test').then((data) => {
+      console.log(data)
+    })
+  },
   components: {
     Hello
   }

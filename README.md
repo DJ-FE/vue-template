@@ -50,6 +50,52 @@ npm run deploy prod
 
 5. 项目模板依赖于 `vue-cli`，安装使用 `npm install -g vue-cli`
 
+### 配置
+
+1. 基本配置：/config/index.js
+    
+    基本参数配置 ：settings
+
+        dropConsole  是否去掉生产环境console 默认 true
+
+        enableEslint 是否开启eslint 默认true
+
+        spriteConfig 雪碧图配置 ，不需要可置为false
+    
+    环境配置：dev test prod
+
+3. eslint配置:  /.eslintrc.js 
+
+4. postcss配置: /.postcssrc.js
+
+    插件项：
+
+        postcss-px2rem: {remUnit: 100} 配置px自动转rem ， 单位 100
+
+            有些不需要转rem的地方，比如1px边框，需通过注释配置如：border: 1px solid #ddd; /*no*/ https://www.npmjs.com/package/px2rem
+            
+
+        autoprefixer: { browsers: ['> 1%', 'IOS 7']} 配置兼容设备浏览器等 
+
+5.  ftp配置: /config/deploy.js
+
+6.  mock配置：/mock
+
+    {
+        api : xxx ,
+        
+        response: {
+            ok: {
+                code: 0,
+                message: '',
+                data: {
+                }
+            }
+        }
+    }
+
+
+
 ### License
 
 [MIT](http://opensource.org/licenses/MIT)
