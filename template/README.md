@@ -72,6 +72,8 @@ npm run deploy prod
 
         postcss-px2rem: {remUnit: 100} 配置px自动转rem ， 单位 100
 
+            有些不需要转rem的地方，比如1px边框，需通过注释配置如：border: 1px solid #ddd; /*no*/ https://www.npmjs.com/package/px2rem
+
         autoprefixer: { browsers: ['> 1%', 'IOS 7']} 配置兼容设备浏览器等 
 
 5.  ftp配置: /config/deploy.js
